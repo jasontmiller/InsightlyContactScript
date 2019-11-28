@@ -21,20 +21,50 @@ namespace ContactsScript
     {
         static void Main(string[] args)
         {
-            //Request Object
-            BasicRequest NewRequest = new BasicRequest();
+            
+            try
+            {
+                string responseval = "";
+                BasicRequest NewRequest = new BasicRequest();
+                HttpWebResponse response = NewRequest.MakeRequest();
 
-            //Returns Get response as String
-            string response = NewRequest.MakeRequest();
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    List<string> errorLog = new List<string> 
+                        {
+                            "Bad Response",
+                            response.StatusDescription
+                        };
+                        Logging.LogWrite(errorLog);
+                }
+                else
+                {
+                    responseval = ProcessRequest(response);
+                    ContactCollection Contacts = new ContactCollection(responseval);
+                    CSVCreator makeCSV = new CSVCreator();
+                    makeCSV.WriteCSV(Contacts);
+                }
 
-            //Creates a new collection of Contact Objects by parsing the response string
-            ContactCollection Contacts = new ContactCollection(response);
+               
+            }
+            catch(Exception e)
+            {
+                List<string> errorLog = new List<string> 
+                    {
+                        "Error",
+                        e.ToString()
+                    };
+                    Logging.LogWrite(errorLog);
+            }
+            
+        }
 
-            //New CSV Creator Object
-            CSVCreator makeCSV = new CSVCreator();
-
-            // Passses contacts collection to CSV for parsing/writing
-            makeCSV.WriteCSV(Contacts);
+        static public string ProcessRequest(HttpWebResponse response)
+        {
+            Stream receiveStream = response.GetResponseStream ();
+            StreamReader readStream = new StreamReader (receiveStream, Encoding.UTF8);
+            string responseVal = readStream.ReadToEnd();
+            return responseVal;
         }
     }
 
@@ -45,19 +75,13 @@ namespace ContactsScript
         private string uri = "https://api.insightly.com/v3.1/Contacts?brief=false&count_total=false";
         private string APIAuth = "ebe96c72-bdca-4e0a-bb65-430bf474f985";
 
-        public string MakeRequest()
+        public HttpWebResponse MakeRequest()
         {
-            //ContactCollection contacts = new ContactCollection();
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
             String encoded = System.Convert.ToBase64String(System.Text.Encoding.GetEncoding("ISO-8859-1").GetBytes(APIAuth));
             request.Headers.Add("Authorization", "Basic " + encoded);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream receiveStream = response.GetResponseStream ();
-            StreamReader readStream = new StreamReader (receiveStream, Encoding.UTF8);
-            string responseVal = readStream.ReadToEnd();
-            return responseVal;
-            
-
+            return response;
         }
       
 
@@ -70,7 +94,6 @@ namespace ContactsScript
         
         public List<InsightlyContact> Contacts { get; set; }
 
-        //private List<InsightlyContact> NewlyAdded;
 
         public List<InsightlyContact> NewlyAdded { get ; set; }
         
@@ -105,14 +128,14 @@ namespace ContactsScript
                 AddContact(insightlyContact);
             }
 
-            // Creates list of new contacts.
+
             DateDelimited();
 
         }
 
         public List<InsightlyContact> NewContacts()
         {
-            //DateDelimited();
+
             return NewlyAdded;
         }
 
@@ -126,7 +149,7 @@ namespace ContactsScript
 
     class CSVCreator
     {
-        //private string csvName = "newCSV";
+
         List<string> headers = new List<string>();
 
         public void WriteCSV(ContactCollection currentContacts)
@@ -139,7 +162,7 @@ namespace ContactsScript
             string[] headers = contactForHeaders.GetType().GetProperties().Select(x => x.Name).ToArray();
             csvrows.Add(headers);
             
-            //List<string> returnRows = new List<string>();
+            
             foreach(InsightlyContact record in currentContacts.NewContacts())
             {
                 string[] row = record.GetType().GetProperties().Select(x => x.GetValue(record,null) != null ? x.GetValue(record,null).ToString(): "").ToArray();
@@ -148,6 +171,25 @@ namespace ContactsScript
             
             File.WriteAllLines("Contacts.CSV", csvrows.Select(x => string.Join(",", x)));
 
+        }
+
+    }
+
+    static class Logging 
+    {
+        static private string loglocation = "contactsScriptLog.txt";
+
+        static public void LogWrite(List<string> logwriteVals)
+        {
+            var log = new StringBuilder();
+            string dateString = DateTime.Now.ToLongDateString();
+            string logLine = dateString;
+            foreach(string val in logwriteVals)
+            {
+                logLine += ", " + val;
+            }
+            log.AppendLine(logLine);
+            File.AppendAllText(loglocation, log.ToString());
         }
 
     }
