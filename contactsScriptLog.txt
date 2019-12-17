@@ -2,3 +2,7 @@ Wednesday, November 27, 2019, Error, System.Net.WebException: The remote server 
    at System.Net.HttpWebRequest.GetResponse()
    at ContactsScript.BasicRequest.MakeRequest() in /home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/Program.cs:line 83
    at ContactsScript.Program.Main(String[] args) in /home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/Program.cs:line 29
+Monday, December 16, 2019, Error, System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ContactsScript.BasicRequest.MakeRequest() in /home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/Program.cs:line 84
+   at ContactsScript.Program.Main(String[] args) in /home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/Program.cs:line 29

@@ -73,10 +73,13 @@ namespace ContactsScript
     {
 
         private string uri = "https://api.insightly.com/v3.1/Contacts?brief=false&count_total=false";
-        private string APIAuth = "ebe96c72-bdca-4e0a-bb65-430bf474f985";
+        private string APIAuth; 
+
 
         public HttpWebResponse MakeRequest()
         {
+            //Reads Auth value from .txt file
+            APIAuth = System.IO.File.ReadAllText(@"Auth.txt");
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
             String encoded = System.Convert.ToBase64String(System.Text.Encoding.GetEncoding("ISO-8859-1").GetBytes(APIAuth));
             request.Headers.Add("Authorization", "Basic " + encoded);
