@@ -138,6 +138,7 @@ namespace QuickType
 
         [JsonProperty("DATES")]
         public object[] Dates { get; set; }
+
     }
 
     public partial class Tag
@@ -167,5 +168,55 @@ namespace QuickType
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
         };
+    }
+
+
+    //Adding functionality for conversion to import CSV
+
+    public partial class InsightlyContact
+    {
+        //private string fullName;
+        public string FullName
+        {
+            get { return FirstName + " " + LastName; }
+            //set { fullName = value; }
+        }
+
+        //private string businessAddressFull;
+        public string BusinessAddressFull
+        {
+            get { return 
+            
+            AddressMailStreet +"\n" +
+            AddressMailCity +"\n" +
+            AddressMailState +"\n" +
+            AddressOtherPostcode +"\n" +
+            AddressOtherCountry; }
+            //set { businessAddressFull = value; }
+        }
+        
+        //private string tagList;
+        public string TagList
+        {
+            get { 
+                return CreateTagList();
+                //return tagList; 
+                
+                }
+            //set { tagList = value; }
+        }
+
+        private string CreateTagList()
+        {
+            string tagList = "";
+            foreach(Tag tagitem in Tags)
+            {
+                tagList += tagitem.TagName + ", ";
+            }
+
+            return tagList;
+        }
+        
+        
     }
 }

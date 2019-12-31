@@ -21,7 +21,14 @@ namespace ContactsScript
     {
         static void Main(string[] args)
         {
-            
+            OrgRequest test = new OrgRequest();
+            HttpWebResponse testresponse = test.MakeRequest();
+            string stringTest = ProcessRequest(testresponse);
+
+            //JArray jArray = JArray.Parse();
+            JObject json = JObject.Parse(stringTest);
+
+
             try
             {
                 string responseval = "";
@@ -68,6 +75,25 @@ namespace ContactsScript
         }
     }
 
+    class OrgRequest 
+    {
+        private string testOrgId = "141099606";
+        private string uri = "https://api.insightly.com/v3.1/Organisations/";
+        private string APIAuth; 
+        //141099606
+        
+
+        public HttpWebResponse MakeRequest()
+        {
+            //Reads Auth value from .txt file
+            APIAuth = System.IO.File.ReadAllText(@"Auth.txt");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri + testOrgId );
+            String encoded = System.Convert.ToBase64String(System.Text.Encoding.GetEncoding("ISO-8859-1").GetBytes(APIAuth));
+            request.Headers.Add("Authorization", "Basic " + encoded);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            return response;
+        }
+    }
     
     class BasicRequest 
     {
@@ -155,6 +181,8 @@ namespace ContactsScript
 
         List<string> headers = new List<string>();
 
+        //Dictionary<string,string> csvRowMap = new Dictionary<string,string>();
+
         public void WriteCSV(ContactCollection currentContacts)
         {
             
@@ -175,6 +203,7 @@ namespace ContactsScript
             File.WriteAllLines("Contacts.CSV", csvrows.Select(x => string.Join(",", x)));
 
         }
+
 
     }
 
@@ -197,5 +226,9 @@ namespace ContactsScript
 
     }
 
+    
 
+    
+
+    
 }
