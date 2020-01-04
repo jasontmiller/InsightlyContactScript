@@ -21,12 +21,12 @@ namespace ContactsScript
     {
         static void Main(string[] args)
         {
-            OrgRequest test = new OrgRequest();
-            HttpWebResponse testresponse = test.MakeRequest();
-            string stringTest = ProcessRequest(testresponse);
+            //OrgRequest test = new OrgRequest();
+            //HttpWebResponse testresponse = test.MakeRequest();
+            //string stringTest = ProcessRequest(testresponse);
 
             //JArray jArray = JArray.Parse();
-            JObject json = JObject.Parse(stringTest);
+            //JObject json = JObject.Parse(stringTest);
 
 
             try

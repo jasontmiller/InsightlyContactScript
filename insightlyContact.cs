@@ -13,6 +13,11 @@ namespace QuickType
     using System.Globalization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
+    using System.Net;
+    using System.Linq;
+    using System.Text;
+    using System.IO;
+    using Newtonsoft.Json.Linq;
 
     public partial class InsightlyContact
     {
@@ -194,6 +199,14 @@ namespace QuickType
             AddressOtherCountry; }
             //set { businessAddressFull = value; }
         }
+
+        //private string orgName;
+        public string OrgName
+        {
+            get { return GetOrgName(); }
+           //set { orgName = value; }
+        }
+        
         
         //private string tagList;
         public string TagList
@@ -209,14 +222,71 @@ namespace QuickType
         private string CreateTagList()
         {
             string tagList = "";
+            int tagCount = Tags.Count();
             foreach(Tag tagitem in Tags)
             {
-                tagList += tagitem.TagName + ", ";
+                if (tagitem.TagName == Tags[tagCount -1].TagName)
+                {
+                    tagList += tagitem.TagName;
+                }
+                else
+                {
+                    tagList += tagitem.TagName + ", ";
+                }
+                
             }
+
+            tagList = "\"" + tagList + "\"";
 
             return tagList;
         }
+
+        private string GetOrgName()
+        {
+            
+            OrgRequest getOrgName = new OrgRequest();
+            string name = "";
+            if(this.OrganisationId != null)
+            {
+                var orgName = getOrgName.MakeRequest(this.OrganisationId.ToString());
+                string orgString = getOrgName.ProcessRequest(orgName);
+                JObject json = JObject.Parse(orgString);
+                name = json.SelectToken("ORGANISATION_NAME").ToString();
+                
+                
+            }
+            return name;
+        }
         
         
+    }
+
+    class OrgRequest 
+    {
+        //private string testOrgId = "141099606";
+        private string uri = "https://api.insightly.com/v3.1/Organisations/";
+        private string APIAuth; 
+        //141099606
+        
+
+        public HttpWebResponse MakeRequest(string orgID)
+        {
+            //Reads Auth value from .txt file
+            APIAuth = System.IO.File.ReadAllText(@"Auth.txt");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri + orgID );
+            String encoded = System.Convert.ToBase64String(System.Text.Encoding.GetEncoding("ISO-8859-1").GetBytes(APIAuth));
+            request.Headers.Add("Authorization", "Basic " + encoded);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            return response;
+        }
+
+        public string ProcessRequest(HttpWebResponse response)
+        {
+            Stream receiveStream = response.GetResponseStream ();
+            StreamReader readStream = new StreamReader (receiveStream, Encoding.UTF8);
+            string responseVal = readStream.ReadToEnd();
+            
+            return responseVal;
+        }
     }
 }

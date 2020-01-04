@@ -52,19 +52,23 @@
     ]
   },
   "packageFolders": {
-    "/home/jason/.nuget/packages/": {}
+    "C:\\Users\\jason\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/ContactsScript.csproj",
+      "projectUniqueName": "C:\\Consulting\\ChandlerFoundation\\ContactsScript\\InsightlyContactScript\\ContactsScript.csproj",
       "projectName": "ContactsScript",
-      "projectPath": "/home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/ContactsScript.csproj",
-      "packagesPath": "/home/jason/.nuget/packages/",
-      "outputPath": "/home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/obj/",
+      "projectPath": "C:\\Consulting\\ChandlerFoundation\\ContactsScript\\InsightlyContactScript\\ContactsScript.csproj",
+      "packagesPath": "C:\\Users\\jason\\.nuget\\packages\\",
+      "outputPath": "C:\\Consulting\\ChandlerFoundation\\ContactsScript\\InsightlyContactScript\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "/home/jason/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\jason\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
@@ -106,7 +110,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
