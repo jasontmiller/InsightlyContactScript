@@ -192,11 +192,11 @@ namespace QuickType
         {
             get { return 
             
-            AddressMailStreet +"\n" +
+            "\"" + AddressMailStreet +"\n" +
             AddressMailCity +"\n" +
             AddressMailState +"\n" +
             AddressOtherPostcode +"\n" +
-            AddressOtherCountry; }
+            AddressOtherCountry + "\"";}
             //set { businessAddressFull = value; }
         }
 

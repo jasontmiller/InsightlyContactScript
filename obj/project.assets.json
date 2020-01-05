@@ -52,23 +52,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jason\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/home/jason/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Consulting\\ChandlerFoundation\\ContactsScript\\InsightlyContactScript\\ContactsScript.csproj",
+      "projectUniqueName": "/home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/ContactsScript.csproj",
       "projectName": "ContactsScript",
-      "projectPath": "C:\\Consulting\\ChandlerFoundation\\ContactsScript\\InsightlyContactScript\\ContactsScript.csproj",
-      "packagesPath": "C:\\Users\\jason\\.nuget\\packages\\",
-      "outputPath": "C:\\Consulting\\ChandlerFoundation\\ContactsScript\\InsightlyContactScript\\obj\\",
+      "projectPath": "/home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/ContactsScript.csproj",
+      "packagesPath": "/home/jason/.nuget/packages/",
+      "outputPath": "/home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\jason\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/jason/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
@@ -105,12 +101,18 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[3.0.0, 3.0.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.0.101/RuntimeIdentifierGraph.json"
       }
     }
   }

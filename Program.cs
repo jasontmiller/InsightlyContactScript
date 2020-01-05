@@ -49,7 +49,8 @@ namespace ContactsScript
                     responseval = ProcessRequest(response);
                     ContactCollection Contacts = new ContactCollection(responseval);
                     CSVCreator makeCSV = new CSVCreator();
-                    makeCSV.WriteCSV(Contacts);
+                    //makeCSV.WriteCSV(Contacts);
+                    makeCSV.WriteUploadCSV(Contacts);
                 }
 
                
@@ -125,6 +126,8 @@ namespace ContactsScript
 
 
         public List<InsightlyContact> NewlyAdded { get ; set; }
+
+
         
 
         public void AddContact(InsightlyContact newContact)
@@ -170,6 +173,7 @@ namespace ContactsScript
 
         public ContactCollection(string response)
         {
+            
             Contacts = new List<InsightlyContact>();
             NewlyAdded = new List<InsightlyContact>();
             GenerateContactsFromResponseString(response);
@@ -200,6 +204,59 @@ namespace ContactsScript
                 csvrows.Add(row);
             }
             
+            File.WriteAllLines("Contacts.CSV", csvrows.Select(x => string.Join(",", x)));
+
+        }
+
+        public void WriteUploadCSV(ContactCollection currentContacts)
+        {
+            var csv = new StringBuilder();
+            List<string[]> csvrows = new List<string[]>();
+
+            //Simpler CSV Map. Outlook headers on the left, insightly props on the right
+            Dictionary<string,string> csvRowMap = new Dictionary<string,string>()
+            {
+                {"BusinessAddressCity", "AddressMailCity"},
+                {"BusinessAddressCountry", "AddressMailCountry"},
+                {"BusinessAddressPostalCode", "AddressMailPostcode"},
+                {"BusinessAddressState", "AddressMailState"},
+                {"BusinessAddressStreet", "AddressMailStreet"},
+                {"BusinessFaxNumber", "PhoneFax"},
+                {"BusinessTelephoneNumber", "Phone"},
+                {"Email1Address", "EmailAddress"},
+                {"FirstName", "FirstName"},
+                {"JobTitle", "Title"},
+                {"LastName", "LastName"},
+                {"MobileTelephoneNumber", "PhoneMobile"},
+                {"Title", "Salutation"},
+                {"BusinessAddress","BusinessAddressFull"},
+                {"Categories","TagList"},
+                {"CompanyName","OrgName"},
+                {"FullName","FullName"}
+            };
+
+            string[] headers = csvRowMap.Keys.ToArray();
+            string[] values = csvRowMap.Values.ToArray();
+            csvrows.Add(headers);
+
+            foreach(InsightlyContact record in currentContacts.NewContacts())
+            {
+                List<string> rowValList = new List<string>();
+                foreach(string propname in values)
+                {
+                    string valstring = "";
+                    if(record.GetType().GetProperty(propname).GetValue(record, null) != null)
+                    {
+                        valstring = record.GetType().GetProperty(propname).GetValue(record, null).ToString();
+                    }
+                    rowValList.Add(valstring);
+                }
+
+                csvrows.Add(rowValList.ToArray());
+                //string[] row = record.GetType().GetProperties().Select(x => x.GetValue(record,null) != null ? x.GetValue(record,null).ToString(): "").ToArray();
+                //csvrows.Add(row);
+            }
+
             File.WriteAllLines("Contacts.CSV", csvrows.Select(x => string.Join(",", x)));
 
         }
