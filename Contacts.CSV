@@ -1,11 +1,13 @@
 BusinessAddressCity,BusinessAddressCountry,BusinessAddressPostalCode,BusinessAddressState,BusinessAddressStreet,BusinessFaxNumber,BusinessTelephoneNumber,Email1Address,FirstName,JobTitle,LastName,MobileTelephoneNumber,Title,BusinessAddress,Categories,CompanyName,FullName
-Los Angeles,,,CA,123 4th st,,555-555-5555,new@fakenames.org,New,,TestPerson,,Mr,"123 4th st
-Los Angeles
-CA
-
-","consultant, test",Clampett Oil and Gas Corp.,New TestPerson
 Pittsburgh,United States,26758,PA,456 8th Lane,888 888 8888,666 666 6666,drfanderbiles@fakeorg.org,Niles,Director of Fileology,Fanderbiles,777 777 7777,Dr.,"456 8th Lane
 Pittsburgh
 PA
 
 ","consultant, test",Clampett Oil and Gas Corp.,Niles Fanderbiles
+Chicago,,60612,IL,123 Main St
+Apt 3,,777 777 7777,profThirdTest@fakefakefake.com,Terry,Professor,NewTest,777 777 7777,Prof.,"123 Main St
+Apt 3
+Chicago
+IL
+
+","test",,Terry NewTest

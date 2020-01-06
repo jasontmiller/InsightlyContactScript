@@ -195,8 +195,8 @@ namespace QuickType
             "\"" + AddressMailStreet +"\n" +
             AddressMailCity +"\n" +
             AddressMailState +"\n" +
-            AddressOtherPostcode +"\n" +
-            AddressOtherCountry + "\"";}
+            AddressMailPostcode +"\n" +
+            AddressMailCountry+ "\"";}
             //set { businessAddressFull = value; }
         }
 
