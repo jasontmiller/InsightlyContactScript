@@ -29,6 +29,7 @@ ContactsScript
   
   CSVCreator: Generates a local CSV from ContactCollection (currently defaults to taking new contacts
   - WriteCSV: Takes a ContactCollection and writes the 'NewContacts' list to a local CSV (contacts.CSV). This is an overwrite, not an append.
+  - WriteUploadCSV: Contains a dictionary that maps specific contact properties against the desired outlook fields, and returns the same delimited list with just those mapped fields.
       
    [Static]Logging: Logs excptions and bad responses:
    - LogWrite: takes a string list and writes to local txt files ("contactsScriptLog.txt")
@@ -37,7 +38,11 @@ QuickType: This is the namespace for the contact objects. The structure was gene
 
 https://quicktype.io/
 
-it mirrors the sample structure from the 'GetEntities' sample from up top.
+it mirrors the sample structure from the 'GetEntities' sample from up top. I've added a couple of additional fields required for the upload cv:
+   - FullName: It's the concatenation of the first and last names
+   - BusinessAddress: Concatenation of address fields w/ new lines
+   - Categories: a list of the 'tags' from insightly separated by commas
+   - Company: Pulled and associated via a separate API call
       
       
 
