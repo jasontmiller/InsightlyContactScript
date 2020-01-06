@@ -11,3 +11,16 @@
 /home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/obj/Debug/netcoreapp3.0/ContactsScript.csproj.CopyComplete
 /home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/obj/Debug/netcoreapp3.0/ContactsScript.dll
 /home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/obj/Debug/netcoreapp3.0/ContactsScript.pdb
+C:\Consulting\ChandlerFoundation\ContactsScript\InsightlyContactScript\bin\Debug\netcoreapp3.0\ContactsScript.exe
+C:\Consulting\ChandlerFoundation\ContactsScript\InsightlyContactScript\bin\Debug\netcoreapp3.0\ContactsScript.deps.json
+C:\Consulting\ChandlerFoundation\ContactsScript\InsightlyContactScript\bin\Debug\netcoreapp3.0\ContactsScript.runtimeconfig.json
+C:\Consulting\ChandlerFoundation\ContactsScript\InsightlyContactScript\bin\Debug\netcoreapp3.0\ContactsScript.runtimeconfig.dev.json
+C:\Consulting\ChandlerFoundation\ContactsScript\InsightlyContactScript\bin\Debug\netcoreapp3.0\ContactsScript.dll
+C:\Consulting\ChandlerFoundation\ContactsScript\InsightlyContactScript\bin\Debug\netcoreapp3.0\ContactsScript.pdb
+C:\Consulting\ChandlerFoundation\ContactsScript\InsightlyContactScript\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Consulting\ChandlerFoundation\ContactsScript\InsightlyContactScript\obj\Debug\netcoreapp3.0\ContactsScript.csprojAssemblyReference.cache
+C:\Consulting\ChandlerFoundation\ContactsScript\InsightlyContactScript\obj\Debug\netcoreapp3.0\ContactsScript.AssemblyInfoInputs.cache
+C:\Consulting\ChandlerFoundation\ContactsScript\InsightlyContactScript\obj\Debug\netcoreapp3.0\ContactsScript.AssemblyInfo.cs
+C:\Consulting\ChandlerFoundation\ContactsScript\InsightlyContactScript\obj\Debug\netcoreapp3.0\ContactsScript.csproj.CopyComplete
+C:\Consulting\ChandlerFoundation\ContactsScript\InsightlyContactScript\obj\Debug\netcoreapp3.0\ContactsScript.dll
+C:\Consulting\ChandlerFoundation\ContactsScript\InsightlyContactScript\obj\Debug\netcoreapp3.0\ContactsScript.pdb

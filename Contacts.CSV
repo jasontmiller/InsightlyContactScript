@@ -1,2 +1,13 @@
-ContactId,Salutation,FirstName,LastName,ImageUrl,Background,VisibleTo,OwnerUserId,VisibleTeamId,DateCreatedUtc,DateUpdatedUtc,SocialLinkedin,SocialFacebook,SocialTwitter,DateOfBirth,Phone,PhoneHome,PhoneMobile,PhoneOther,PhoneAssistant,PhoneFax,EmailAddress,AssistantName,AddressMailStreet,AddressMailCity,AddressMailState,AddressMailPostcode,AddressMailCountry,AddressOtherStreet,AddressOtherCity,AddressOtherState,AddressOtherPostcode,AddressOtherCountry,LastActivityDateUtc,NextActivityDateUtc,CreatedUserId,OrganisationId,Title,Customfields,Tags,Dates
-302882746,,John,Testman,,Fake For Test,EVERYONE,1827682,,12/17/2019 12:00:04 AM +00:00,12/17/2019 12:00:04 AM +00:00,,,,,555 555 5555,,,,,,fake@faketime.org,,,,,,,,,,,,,,1827682,,VP of Testing,System.Object[],QuickType.Tag[],System.Object[]
+BusinessAddressCity,BusinessAddressCountry,BusinessAddressPostalCode,BusinessAddressState,BusinessAddressStreet,BusinessFaxNumber,BusinessTelephoneNumber,Email1Address,FirstName,JobTitle,LastName,MobileTelephoneNumber,Title,BusinessAddress,Categories,CompanyName,FullName
+Pittsburgh,United States,26758,PA,456 8th Lane,888 888 8888,666 666 6666,drfanderbiles@fakeorg.org,Niles,Director of Fileology,Fanderbiles,777 777 7777,Dr.,"456 8th Lane
+Pittsburgh
+PA
+
+","consultant, test",Clampett Oil and Gas Corp.,Niles Fanderbiles
+Chicago,,60612,IL,123 Main St
+Apt 3,,777 777 7777,profThirdTest@fakefakefake.com,Terry,Professor,NewTest,777 777 7777,Prof.,"123 Main St
+Apt 3
+Chicago
+IL
+
+","test",,Terry NewTest

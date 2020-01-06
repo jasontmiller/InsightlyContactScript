@@ -6,3 +6,6 @@ Monday, December 16, 2019, Error, System.Net.WebException: The remote server ret
    at System.Net.HttpWebRequest.GetResponse()
    at ContactsScript.BasicRequest.MakeRequest() in /home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/Program.cs:line 84
    at ContactsScript.Program.Main(String[] args) in /home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/Program.cs:line 29
+Sunday, January 5, 2020, Error, System.NullReferenceException: Object reference not set to an instance of an object.
+   at ContactsScript.CSVCreator.WriteUploadCSV(ContactCollection currentContacts) in /home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/Program.cs:line 247
+   at ContactsScript.Program.Main(String[] args) in /home/jason/Documents/Consulting/Chandler_Foundation/ContactsScript/Program.cs:line 53
